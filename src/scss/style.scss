@@ -5,4 +5,33 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  @include font-b;
+}
+
+header {
+  @include flex-row;
+
+  justify-content: space-between;
+
+  nav {
+    ul {
+      list-style: none;
+
+      @include flex-row;
+
+      li {
+        a {
+          text-decoration: none;
+
+          @include font-b;
+        }
+      }
+    }
+  }
 }
