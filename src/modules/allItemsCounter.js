@@ -3,7 +3,7 @@ const totalItems = (arr, domElement) => {
   while (arr[length] !== undefined) {
     length += 1;
   }
-  domElement.innerHTML = `${length}`;
+  domElement.innerHTML = `(${length})`;
   return length;
 };
 

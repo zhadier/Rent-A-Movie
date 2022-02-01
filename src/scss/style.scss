@@ -62,18 +62,23 @@ header {
     align-items: center;
     gap: 5px;
 
+    .movie-wrapper__img {
+      width: 250px;
+    }
+
     .movie-wrapper__title {
       @include flex-row;
 
       justify-content: space-between;
       align-items: center;
       gap: 5px;
-      width: 210px;
+      width: 250px;
       height: 36px;
 
       .movie-wrapper__likes {
-        @include flex-row;
+        @include flex-colum;
 
+        align-items: center;
         gap: 3px;
 
         i {
@@ -90,7 +95,7 @@ header {
     }
 
     .movie-wrapper__comment-button {
-      width: 210px;
+      width: 250px;
     }
   }
 }
