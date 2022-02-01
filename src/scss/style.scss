@@ -60,6 +60,23 @@ header {
       gap: 5px;
       width: 210px;
       height: 36px;
+
+      .movie-wrapper__likes {
+        @include flex-row;
+
+        gap: 2px;
+
+        i {
+          &:hover {
+            color: rgb(248, 27, 64);
+          }
+
+          &:active {
+            color: rgb(167, 0, 28);
+            text-shadow: 0 0 5px;
+          }
+        }
+      }
     }
 
     .movie-wrapper__comment-button {
