@@ -33,8 +33,8 @@ const displayMovies = async (movieList) => {
     movieSection.appendChild(mainDiv);
     like.addEventListener('click', () => {
       setLike(`movie${item.id}`);
-      const number = like.parentNode.lastChild.textContent;
-      like.parentNode.lastChild.innerHTML = `${Number(number) + 1}`;
+      const number = like.parentNode.lastChild.textContent.split(' ');
+      like.parentNode.lastChild.innerHTML = `${Number(number[0]) + 1} likes`;
     });
   });
   updateLikes();
