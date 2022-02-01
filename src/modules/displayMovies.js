@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { getLikes, setLikes } from './likeFunctionality';
+=======
+import displayMovieDetails from './displayMovieDetails.js';
+
+>>>>>>> dev
 const displayMovies = async (movieList) => {
   const movieSection = document.querySelector('#movie-section');
   movieSection.innerHTML = '';
@@ -24,6 +29,9 @@ const displayMovies = async (movieList) => {
     commentButton.className = 'movie-wrapper__comment-button';
     likes.append(like, span);
     details.append(name, likes);
+    commentButton.addEventListener('click', () => {
+      displayMovieDetails(item);
+    });
     mainDiv.append(img, details, commentButton);
     movieSection.appendChild(mainDiv);
     like.addEventListener('click', () => {

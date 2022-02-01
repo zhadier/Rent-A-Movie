@@ -1,6 +1,6 @@
 import './scss/style.scss';
-import displayMovies from './modules/displayMovies';
-import getMovieData from './modules/consumeTVMazeAPI';
+import getMovieData from './modules/consumeTVMazeAPI.js';
+import displayMovies from './modules/displayMovies.js';
 
 const query = 'action';
 
