@@ -18,6 +18,16 @@ header {
   @include flex-row;
 
   justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: 50px;
+  margin: auto;
+
+  a {
+    @include font-h;
+
+    text-decoration: none;
+  }
 
   nav {
     ul {
@@ -52,19 +62,24 @@ header {
     align-items: center;
     gap: 5px;
 
+    .movie-wrapper__img {
+      width: 250px;
+    }
+
     .movie-wrapper__title {
       @include flex-row;
 
       justify-content: space-between;
       align-items: center;
       gap: 5px;
-      width: 210px;
+      width: 250px;
       height: 36px;
 
       .movie-wrapper__likes {
-        @include flex-row;
+        @include flex-colum;
 
-        gap: 2px;
+        align-items: center;
+        gap: 3px;
 
         i {
           &:hover {
@@ -80,7 +95,7 @@ header {
     }
 
     .movie-wrapper__comment-button {
-      width: 210px;
+      width: 250px;
     }
   }
 }
