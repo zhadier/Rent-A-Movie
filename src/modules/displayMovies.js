@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-import { getLikes, setLikes } from './likeFunctionality';
-=======
+import { updateLikes, setLike } from './likeFunctionality';
 import displayMovieDetails from './displayMovieDetails.js';
 
->>>>>>> dev
 const displayMovies = async (movieList) => {
   const movieSection = document.querySelector('#movie-section');
   movieSection.innerHTML = '';
@@ -35,13 +32,12 @@ const displayMovies = async (movieList) => {
     mainDiv.append(img, details, commentButton);
     movieSection.appendChild(mainDiv);
     like.addEventListener('click', () => {
-      setLikes(`movie${item.id}`);
-      getLikes().then((response) => {
-        response = response.filter((ele) => ele.item_id === `movie${item.id}`);
-        span.innerHTML = `${response[0].likes}`;
-      });
+      setLike(`movie${item.id}`);
+      const number = like.parentNode.lastChild.textContent;
+      like.parentNode.lastChild.innerHTML = `${Number(number) + 1}`;
     });
   });
+  updateLikes();
 };
 
 export { displayMovies as default };
