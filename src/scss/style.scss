@@ -71,7 +71,8 @@ header {
 .modal__box {
   width: 100%;
   background-color: rgb(128, 128, 128, 0.9);
-  // display: none;
+  display: none;
+
   @include flex-center;
 
   position: fixed;
@@ -90,6 +91,7 @@ header {
     background-color: #fff;
     border-radius: 5px;
     overflow-y: auto;
+    position: relative;
 
     > * {
       width: 100%;
@@ -120,6 +122,35 @@ header {
         padding: 0.5rem 0;
       }
     }
+
+    .btn {
+      padding: 0.5rem;
+      background: transparent;
+      border: 1px solid $gray-dark;
+      cursor: pointer;
+
+      @include font-h;
+
+      background-color: transparent;
+      transition: background-color ease-out 250ms;
+
+      &:hover {
+        border: 1px solid $accent;
+        background-color: $accent;
+        color: #fff;
+      }
+    }
+
+    .btn__close-modal {
+      width: 1.5rem;
+      border: 1px solid transparent;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 11;
+    }
   }
 
   .movie__details {
@@ -148,6 +179,8 @@ header {
   }
 
   .movie__comments {
+    clear: both;
+
     .item-date,
     .item-name {
       margin-right: 0.5rem;
@@ -162,6 +195,7 @@ header {
     form {
       width: 100%;
       max-width: 500px;
+      margin-top: 0.5rem;
 
       @include flex-colum;
 
@@ -171,24 +205,6 @@ header {
 
       > :last-child {
         margin-bottom: 0;
-      }
-
-      .btn {
-        padding: 0.5rem;
-        background: transparent;
-        border: 1px solid $gray-dark;
-        cursor: pointer;
-
-        @include font-b;
-
-        background-color: transparent;
-        transition: background-color ease-out 250ms;
-
-        &:hover {
-          border: 1px solid $accent;
-          background-color: $accent;
-          color: #fff;
-        }
       }
 
       .input__field {
