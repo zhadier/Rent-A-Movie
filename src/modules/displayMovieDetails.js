@@ -1,4 +1,4 @@
-import { getComments, addComment } from './consumeInvolvementAPI.js';
+import { getComments, addComment, countComments } from './consumeInvolvementAPI.js';
 
 const modalBox = document.querySelector('.modal__box');
 const modalCloseBtn = document.querySelector('#btn__close-modal');
@@ -40,7 +40,7 @@ const buildMovieComments = (arr) => {
   const movieComments = document.querySelector('.movie__comments');
   movieComments.innerHTML = '';
   const title = document.createElement('h3');
-  title.textContent = `Comments (${arr.length})`;
+  title.textContent = countComments(arr);
   movieComments.appendChild(title);
   const commentList = document.createElement('ul');
   commentList.classList.add('comments__list');
@@ -62,8 +62,8 @@ const displayMovieDetails = (movie) => {
   buildMovieDescription(movie);
   getComments(movie.id).then((list) => {
     buildMovieComments(list);
+    modalBox.classList.add('modal__box-display');
   });
-  modalBox.classList.add('modal__box-display');
 };
 
 modalCloseBtn.addEventListener('click', () => {

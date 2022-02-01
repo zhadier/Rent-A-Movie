@@ -1,4 +1,4 @@
-import { updateLikes, setLike } from './likeFunctionality';
+import { updateLikes, setLike } from './likeFunctionality.js';
 import displayMovieDetails from './displayMovieDetails.js';
 
 const displayMovies = async (movieList) => {

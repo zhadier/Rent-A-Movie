@@ -1,4 +1,4 @@
-import totalItems from '../modules/allItemsCounter';
+import totalItems from '../modules/allItemsCounter.js';
 
 beforeAll(() => {
   document.body.innerHTML = `
