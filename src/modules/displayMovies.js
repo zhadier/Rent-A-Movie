@@ -19,7 +19,7 @@ const displayMovies = async (movieList) => {
     likes.className = 'movie-wrapper__likes';
     const span = document.createElement('span');
     const like = document.createElement('i');
-    like.className = 'far fa-heart';
+    like.className = 'fas fa-heart';
     const commentButton = document.createElement('button');
     commentButton.type = 'button';
     commentButton.innerHTML = 'Comments';
