@@ -1,5 +1,4 @@
 import getMovie from './consumeTVMazeAPI.js';
-import { newApp } from './consumeInvolvementAPI.js';
 
 const arrIntoString = (arr) => {
   let str = '';
@@ -34,16 +33,7 @@ const buildMovieDescription = (data) => {
 const displayMovieDetails = (movieId) => {
   getMovie(movieId).then((obj) => {
     buildMovieDescription(obj, movieId);
-    // getComments(movieId).then((list) => {
-    //   buildMovieComments(list);
-    // });
   });
 };
 
-const createApp = (app) => {
-  newApp(app).then((ans) => {
-    console.log(ans);
-  });
-};
-
-export { displayMovieDetails, createApp };
+export { displayMovieDetails as default };
