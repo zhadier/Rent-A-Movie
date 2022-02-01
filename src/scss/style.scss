@@ -18,6 +18,16 @@ header {
   @include flex-row;
 
   justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  height: 50px;
+  margin: auto;
+
+  a {
+    @include font-h;
+
+    text-decoration: none;
+  }
 
   nav {
     ul {
@@ -64,7 +74,7 @@ header {
       .movie-wrapper__likes {
         @include flex-row;
 
-        gap: 2px;
+        gap: 3px;
 
         i {
           &:hover {
