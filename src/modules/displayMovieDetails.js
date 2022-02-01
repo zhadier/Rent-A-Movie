@@ -1,4 +1,4 @@
-import getMovie from './consumeTVMazeAPI.js';
+import { getMovie } from './consumeTVMazeAPI.js';
 
 const arrIntoString = (arr) => {
   let str = '';

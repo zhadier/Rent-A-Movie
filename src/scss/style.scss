@@ -36,6 +36,38 @@ header {
   }
 }
 
+#movie-section {
+  @include flex-row;
+
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  gap: 30px 3%;
+  justify-content: center;
+  align-items: flex-end;
+
+  .movie-wrapper {
+    @include flex-colum;
+
+    align-items: center;
+    gap: 5px;
+
+    .movie-wrapper__title {
+      @include flex-row;
+
+      justify-content: space-between;
+      align-items: center;
+      gap: 5px;
+      width: 210px;
+      height: 36px;
+    }
+
+    .movie-wrapper__comment-button {
+      width: 210px;
+    }
+  }
+}
+
 .modal__box {
   width: 100%;
   background-color: rgb(128, 128, 128, 0.9);
