@@ -40,7 +40,7 @@ const buildMovieComments = (arr) => {
   const movieComments = document.querySelector('.movie__comments');
   movieComments.innerHTML = '';
   const title = document.createElement('h3');
-  title.textContent = `Comments (${countComments(arr)})`;
+  title.textContent = countComments(arr);
   movieComments.appendChild(title);
   const commentList = document.createElement('ul');
   commentList.classList.add('comments__list');
