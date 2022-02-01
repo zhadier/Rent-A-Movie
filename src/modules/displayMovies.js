@@ -1,3 +1,4 @@
+import { updateLikes, setLike } from './likeFunctionality';
 import displayMovieDetails from './displayMovieDetails.js';
 
 const displayMovies = async (movieList) => {
@@ -14,19 +15,29 @@ const displayMovies = async (movieList) => {
     img.src = item.image.medium;
     const name = document.createElement('h3');
     name.innerHTML = `${item.name}`;
+    const likes = document.createElement('div');
+    likes.className = 'movie-wrapper__likes';
+    const span = document.createElement('span');
     const like = document.createElement('i');
-    like.className = 'far fa-heart';
+    like.className = 'fas fa-heart';
     const commentButton = document.createElement('button');
     commentButton.type = 'button';
     commentButton.innerHTML = 'Comments';
     commentButton.className = 'movie-wrapper__comment-button';
+    likes.append(like, span);
+    details.append(name, likes);
     commentButton.addEventListener('click', () => {
       displayMovieDetails(item);
     });
-    details.append(name, like);
     mainDiv.append(img, details, commentButton);
     movieSection.appendChild(mainDiv);
+    like.addEventListener('click', () => {
+      setLike(`movie${item.id}`);
+      const number = like.parentNode.lastChild.textContent;
+      like.parentNode.lastChild.innerHTML = `${Number(number) + 1}`;
+    });
   });
+  updateLikes();
 };
 
 export { displayMovies as default };
