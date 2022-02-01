@@ -1,35 +1,6 @@
-import getMovieData from './consumeTVMazeAPI';
-
-const getList = async () => {
-  const movieList = await getMovieData().then((dataList) => {
-    let finalList = [];
-    const shortList = dataList.slice(0, 50);
-    shortList.forEach((item) => {
-      const {
-        id, name, genres, image, ended, rating, summary,
-      } = item;
-      finalList = [
-        ...finalList,
-        {
-          id,
-          name,
-          genres,
-          image,
-          ended,
-          rating,
-          summary,
-        },
-      ];
-    });
-    return finalList;
-  });
-  return movieList;
-};
-
-const displayMovies = async () => {
+const displayMovies = async (movieList) => {
   const movieSection = document.querySelector('#movie-section');
   movieSection.innerHTML = '';
-  const movieList = await getList();
   movieList.forEach((item) => {
     const mainDiv = document.createElement('div');
     mainDiv.className = 'movie-wrapper';
@@ -52,4 +23,4 @@ const displayMovies = async () => {
   });
 };
 
-export { displayMovies, getList };
+export { displayMovies as default };

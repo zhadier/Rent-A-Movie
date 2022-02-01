@@ -44,26 +44,28 @@ header {
   flex-wrap: wrap;
   width: 90%;
   margin: auto;
-  gap: 30px;
+  gap: 30px 3%;
   justify-content: center;
-}
+  align-items: flex-end;
 
-.movie-wrapper {
-  width: 15%;
+  .movie-wrapper {
+    @include flex-colum;
 
-  @include flex-colum;
+    align-items: center;
+    gap: 5px;
 
-  align-items: center;
-  gap: 5px;
+    .movie-wrapper__title {
+      @include flex-row;
 
-  .movie-wrapper__title {
-    @include flex-row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 5px;
+      width: 210px;
+      height: 36px;
+    }
 
-    justify-content: space-between;
-    width: 210px;
-  }
-
-  .movie-wrapper__comment-button {
-    width: 200px;
+    .movie-wrapper__comment-button {
+      width: 210px;
+    }
   }
 }

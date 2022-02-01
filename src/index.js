@@ -1,4 +1,9 @@
 import './scss/style.scss';
-import { displayMovies } from './modules/displayMovies';
+import displayMovies from './modules/displayMovies';
+import getMovieData from './modules/consumeTVMazeAPI';
 
-displayMovies();
+const query = 'action';
+
+getMovieData(0, query).then((movieList) => {
+  displayMovies(movieList);
+});
