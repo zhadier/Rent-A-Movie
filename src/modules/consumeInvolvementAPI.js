@@ -23,4 +23,12 @@ const addComment = async (movieId, username, comment) => {
   return response;
 };
 
-export { getComments, addComment };
+const countComments = (arr) => {
+  let count = 0;
+  arr.forEach(() => {
+    count += 1;
+  });
+  return count;
+};
+
+export { getComments, addComment, countComments };
