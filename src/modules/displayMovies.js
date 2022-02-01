@@ -1,9 +1,12 @@
+import displayMovieDetails from './displayMovieDetails.js';
+
 const displayMovies = async (movieList) => {
   const movieSection = document.querySelector('#movie-section');
   movieSection.innerHTML = '';
   movieList.forEach((item) => {
     const mainDiv = document.createElement('div');
     mainDiv.className = 'movie-wrapper';
+    mainDiv.id = `movie${item.id}`;
     const details = document.createElement('div');
     details.className = 'movie-wrapper__title';
     const img = document.createElement('img');
@@ -17,6 +20,9 @@ const displayMovies = async (movieList) => {
     commentButton.type = 'button';
     commentButton.innerHTML = 'Comments';
     commentButton.className = 'movie-wrapper__comment-button';
+    commentButton.addEventListener('click', () => {
+      displayMovieDetails(item);
+    });
     details.append(name, like);
     mainDiv.append(img, details, commentButton);
     movieSection.appendChild(mainDiv);
