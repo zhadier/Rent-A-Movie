@@ -21,10 +21,4 @@ const getMovieData = async (index, query) => {
   return response;
 };
 
-const getMovie = async (movieId) => {
-  const connect = await fetch(`${baseURL}/lookup/shows?tvrage=${movieId}`);
-  const movie = await connect.json();
-  return movie;
-};
-
-export { getMovieData, getMovie };
+export { getMovieData as default };

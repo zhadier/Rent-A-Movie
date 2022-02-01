@@ -1,4 +1,5 @@
-import { getMovie } from './consumeTVMazeAPI.js';
+const modalBox = document.querySelector('.modal__box');
+const modalCloseBtn = document.querySelector('#btn__close-modal');
 
 const arrIntoString = (arr) => {
   let str = '';
@@ -30,10 +31,13 @@ const buildMovieDescription = (data) => {
         ${data.summary}`;
 };
 
-const displayMovieDetails = (movieId) => {
-  getMovie(movieId).then((obj) => {
-    buildMovieDescription(obj, movieId);
-  });
+const displayMovieDetails = (movie) => {
+  buildMovieDescription(movie);
+  modalBox.classList.add('modal__box-display');
 };
+
+modalCloseBtn.addEventListener('click', () => {
+  modalBox.classList.remove('modal__box-display');
+});
 
 export { displayMovieDetails as default };
