@@ -35,3 +35,35 @@ header {
     }
   }
 }
+
+// ### Movie Section ###
+
+#movie-section {
+  @include flex-row;
+
+  flex-wrap: wrap;
+  width: 90%;
+  margin: auto;
+  gap: 30px;
+  justify-content: center;
+}
+
+.movie-wrapper {
+  width: 15%;
+
+  @include flex-colum;
+
+  align-items: center;
+  gap: 5px;
+
+  .movie-wrapper__title {
+    @include flex-row;
+
+    justify-content: space-between;
+    width: 210px;
+  }
+
+  .movie-wrapper__comment-button {
+    width: 200px;
+  }
+}
