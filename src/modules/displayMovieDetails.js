@@ -97,6 +97,7 @@ const displayMovieComments = (movie, appID) => {
 
 const displayMovieReservations = (movie, appID) => {
   buildMovieDescription(movie);
+  newID = appID;
   CIAPI.getReservations(movie.id, appID).then((list) => {
     buildMovieReservations(list);
     closeBox('commentk');
@@ -200,10 +201,10 @@ const sendReservation = (appID) => {
         });
         name.value = '';
         name.focus();
-        formMessageRes.textContent = 'Comment sent successfully';
+        formMessageRes.textContent = 'Reserved successfully';
         displayMessage(formMessageRes);
       } else {
-        displayMessage(formMessageRes, 'Comments are not available for now. Try again later.');
+        displayMessage(formMessageRes, 'Reservations are not available for now. Try again later.');
       }
     });
   }

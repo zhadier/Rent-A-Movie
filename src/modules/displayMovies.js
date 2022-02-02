@@ -35,7 +35,7 @@ const displayMovies = async (movieList, appId, section) => {
     reserveButton.innerHTML = 'Reservations';
     reserveButton.className = 'movie-wrapper__comment-button';
     reserveButton.addEventListener('click', () => {
-      displayMovieReservations(item);
+      displayMovieReservations(item, appId);
     });
     mainDiv.append(reserveButton);
     movieSection.appendChild(mainDiv);
