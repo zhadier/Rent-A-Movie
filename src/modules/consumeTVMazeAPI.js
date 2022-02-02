@@ -1,9 +1,9 @@
 const baseURL = ' https://api.tvmaze.com';
 
-const getMovieData = async (index, query) => {
+const getMovieData = async (index, query, total) => {
   const connect = await fetch(`${baseURL}/shows?q=${query}`);
   const response = await connect.json().then((dataList) => {
-    const shortList = dataList.slice(index, index + 50);
+    const shortList = dataList.slice(index, index + total);
     shortList.map((item) => {
       const container = {
         id: item.id,

@@ -1,13 +1,13 @@
 import { updateLikes, setLike } from './likeFunctionality.js';
 import { displayMovieComments, displayMovieReservations } from './displayMovieDetails.js';
 
-const displayMovies = async (movieList) => {
-  const movieSection = document.querySelector('#movie-section');
+const displayMovies = async (movieList, appId, section) => {
+  const movieSection = document.querySelector(`#${section}-section`);
   movieSection.innerHTML = '';
   movieList.forEach((item) => {
     const mainDiv = document.createElement('div');
     mainDiv.className = 'movie-wrapper';
-    mainDiv.id = `movie${item.id}`;
+    mainDiv.id = `${section}${item.id}`;
     const details = document.createElement('div');
     details.className = 'movie-wrapper__title';
     const img = document.createElement('img');
@@ -27,7 +27,7 @@ const displayMovies = async (movieList) => {
     commentButton.innerHTML = 'Comments';
     commentButton.className = 'movie-wrapper__comment-button';
     commentButton.addEventListener('click', () => {
-      displayMovieComments(item);
+      displayMovieComments(item, appId);
     });
     mainDiv.append(img, details, commentButton);
     const reserveButton = document.createElement('button');
@@ -35,17 +35,17 @@ const displayMovies = async (movieList) => {
     reserveButton.innerHTML = 'Reservations';
     reserveButton.className = 'movie-wrapper__comment-button';
     reserveButton.addEventListener('click', () => {
-      displayMovieReservations(item);
+      displayMovieReservations(item, appId);
     });
     mainDiv.append(reserveButton);
     movieSection.appendChild(mainDiv);
     like.addEventListener('click', () => {
-      setLike(`movie${item.id}`);
+      setLike(`${section}${item.id}`, appId);
       const number = like.parentNode.lastChild.textContent.split(' ');
       like.parentNode.lastChild.innerHTML = `${Number(number[0]) + 1} likes`;
     });
   });
-  updateLikes();
+  updateLikes(appId);
 };
 
 export { displayMovies as default };

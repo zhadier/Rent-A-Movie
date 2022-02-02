@@ -7,6 +7,7 @@ const reservationForm = document.querySelector('#form__reservation');
 const formMessageCom = document.querySelector('#form__message-com');
 const formMessageRes = document.querySelector('#form__message-res');
 let timerId = '';
+let newID = '';
 
 const arrIntoString = (arr) => {
   let str = '';
@@ -84,18 +85,20 @@ const closeBox = (ident) => {
   });
 };
 
-const displayMovieComments = (movie) => {
+const displayMovieComments = (movie, appID) => {
   buildMovieDescription(movie);
-  CIAPI.getComments(movie.id).then((list) => {
+  newID = appID;
+  CIAPI.getComments(movie.id, appID).then((list) => {
     buildMovieComments(list);
     closeBox('reservationk');
     modalBox.classList.add('modal__box-display');
   });
 };
 
-const displayMovieReservations = (movie) => {
+const displayMovieReservations = (movie, appID) => {
   buildMovieDescription(movie);
-  CIAPI.getReservations(movie.id).then((list) => {
+  newID = appID;
+  CIAPI.getReservations(movie.id, appID).then((list) => {
     buildMovieReservations(list);
     closeBox('commentk');
     modalBox.classList.add('modal__box-display');
@@ -136,7 +139,9 @@ const validFormComment = (name, comment) => {
   comment.value = comment.value.trim();
   if (!validString(name.value)) {
     name.focus();
-    displayMessage('Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.');
+    displayMessage(
+      'Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.',
+    );
     return false;
   }
   if (comment.value === '' || comment.value.length > 250) {
@@ -151,21 +156,23 @@ const validFormReservation = (name) => {
   name.value = name.value.trim();
   if (!validString(name.value)) {
     name.focus();
-    displayMessage('Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.');
+    displayMessage(
+      'Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.',
+    );
     return false;
   }
   return true;
 };
 
-const sendComment = () => {
+const sendComment = (appID) => {
   const name = document.querySelector('#inp__username');
   const comment = document.querySelector('#inp__insights');
   const movieId = document.querySelector('.movie__details').getAttribute('data-movieId');
 
   if (validFormComment(name, comment)) {
-    CIAPI.addComment(movieId, name.value, comment.value).then((ans) => {
+    CIAPI.addComment(movieId, name.value, comment.value, appID).then((ans) => {
       if (ans === 'Created') {
-        CIAPI.getComments(movieId).then((list) => {
+        CIAPI.getComments(movieId, appID).then((list) => {
           buildMovieComments(list);
         });
         name.value = '';
@@ -180,24 +187,24 @@ const sendComment = () => {
   }
 };
 
-const sendReservation = () => {
+const sendReservation = (appID) => {
   const name = document.querySelector('#inp__username-res');
   const startDate = document.querySelector('#inp__start-date');
   const endDate = document.querySelector('#inp__end-date');
   const movieId = document.querySelector('.movie__details').getAttribute('data-movieId');
 
   if (validFormReservation(name)) {
-    CIAPI.addReservation(movieId, name.value, startDate.value, endDate.value).then((ans) => {
+    CIAPI.addReservation(movieId, name.value, startDate.value, endDate.value, appID).then((ans) => {
       if (ans === 'Created') {
-        CIAPI.getReservations(movieId).then((list) => {
+        CIAPI.getReservations(movieId, appID).then((list) => {
           buildMovieReservations(list);
         });
         name.value = '';
         name.focus();
-        formMessageRes.textContent = 'Comment sent successfully';
+        formMessageRes.textContent = 'Reserved successfully';
         displayMessage(formMessageRes);
       } else {
-        displayMessage(formMessageRes, 'Comments are not available for now. Try again later.');
+        displayMessage(formMessageRes, 'Reservations are not available for now. Try again later.');
       }
     });
   }
@@ -205,12 +212,12 @@ const sendReservation = () => {
 
 commentForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  sendComment();
+  sendComment(newID);
 });
 
 reservationForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  sendReservation();
+  sendReservation(newID);
 });
 
 export { displayMovieComments, displayMovieReservations };
