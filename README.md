@@ -1,25 +1,25 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project
+# Rent A Movie
 
-> This Webpage is for my Capstone Project for the Html-Css module at Microverse. It is based on an annual event held in my University called EME Olympiad, which is basically an extravaganza of concerts, sport events, arts and so on.
+> This Webpage is based on a movie renting site to make reservations, add comments, or just get details about movies that are being rented by the owner. The user can leave likes, comments or make reservations for movies he would like to rent. 
 
-![screenshot]()
+![screenshot](https://user-images.githubusercontent.com/90556221/152203852-60190f5a-db36-4ed2-996e-fb34a482f805.png)
 
-It is a simple web page which contains information about all the events held in EME Olympiad in 2020.
+Using the tvMaze api, we get ourselves data pertaining to several movies we want to rent and then store the user's reservations and comments regarding those movies using the involvement api.
+
 
 ## Built With
 
-- HTML / CSS / JavaScript
+- HTML / SASS / JavaScript / Webpack / Jest
 
 ## Live Demo
 
-- [Live Demo Link](https://zhadier.github.io/Capstone-Project-1---Eme-Olympiad/)
-- [Video Demo Link](https://www.loom.com/share/38e9a3bbcfbe49e7a680ff9179755a9b)
+- [GH-Pages Link](https://zhadier.github.io/JavaScript-Capstone)
 
 ## Video presentation
 
-[Click here to see the presentation]
+- [Click here to see the presentation] ()
 
 ## Getting Started
 
@@ -29,18 +29,27 @@ It is a simple web page which contains information about all the events held in 
 
 - Clone this repo locally using git and the following git command
 
-  git clone https://github.com/USERNAME/REPOSITORY
+  git clone https://github.com/zhadier/JavaScript-Capstone
 
 #### Step 2:
 
-- Run index.html file in your browser
-- Use developer tools in order to view Mobile version
+- Open the cloned folder in a code editor of your choice
+- Run npm install (npm and node are prerequisites)
+- Run npm start (To show in live server)
+- Run npm test (To see jest testing results)
 
 ## Authors
 
 👤 **Zeeshan Haider**
 
 - GitHub: [@zhadier](https://github.com/zhadier)
+- LinkedIn: [Zeeshan Haider](https://www.linkedin.com/in/zhadier39/)
+
+👤 **Gaby Sanchez*
+
+- GitHub: [@gabyse1](https://github.com/gabyse1)
+- Twitter: [@gabyse0](https://twitter.com/gabyse0)
+- LinkedIn: [Gabriela](https://www.linkedin.com/in/gabriela-s%C3%A1nchez-espirilla-83011b225/)
 
 ## 🤝 Contributing
 
@@ -51,10 +60,11 @@ Feel free to check the [issues page](../../issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
+We would love to hear your thoughts and ideas 🖤
 
 ## Acknowledgments
 
-- The webpage was based on a design by: [Cindy Shin](https://www.behance.net/adagio07) (original design)
+- The Involvement and Tvmaze apis were used to make this project
 
 ## 📝 License
 
