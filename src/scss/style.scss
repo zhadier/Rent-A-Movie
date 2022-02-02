@@ -309,7 +309,8 @@ header {
     }
   }
 
-  .movie__comments {
+  .movie__comments,
+  .movie__reservations {
     clear: both;
 
     .item-date,
@@ -319,6 +320,10 @@ header {
 
     .item-name {
       font-weight: 600;
+    }
+
+    .item-date {
+      font-weight: 400;
     }
   }
 
@@ -373,6 +378,10 @@ header {
 
 .modal__box-display {
   display: flex;
+}
+
+.box__hide {
+  display: none;
 }
 
 footer {

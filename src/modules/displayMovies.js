@@ -1,5 +1,5 @@
 import { updateLikes, setLike } from './likeFunctionality.js';
-import displayMovieDetails from './displayMovieDetails.js';
+import { displayMovieComments, displayMovieReservations } from './displayMovieDetails.js';
 
 const displayMovies = async (movieList) => {
   const movieSection = document.querySelector('#movie-section');
@@ -20,16 +20,24 @@ const displayMovies = async (movieList) => {
     const span = document.createElement('span');
     const like = document.createElement('i');
     like.className = 'fas fa-heart';
+    likes.append(like, span);
+    details.append(name, likes);
     const commentButton = document.createElement('button');
     commentButton.type = 'button';
     commentButton.innerHTML = 'Comments';
     commentButton.className = 'movie-wrapper__comment-button';
-    likes.append(like, span);
-    details.append(name, likes);
     commentButton.addEventListener('click', () => {
-      displayMovieDetails(item);
+      displayMovieComments(item);
     });
     mainDiv.append(img, details, commentButton);
+    const reserveButton = document.createElement('button');
+    reserveButton.type = 'button';
+    reserveButton.innerHTML = 'Reservations';
+    reserveButton.className = 'movie-wrapper__comment-button';
+    reserveButton.addEventListener('click', () => {
+      displayMovieReservations(item);
+    });
+    mainDiv.append(reserveButton);
     movieSection.appendChild(mainDiv);
     like.addEventListener('click', () => {
       setLike(`movie${item.id}`);
