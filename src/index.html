@@ -28,15 +28,28 @@
     <div class="modal__container">
       <div class="movie__container">
         <div class="movie__details"></div>
-        <div class="movie__comments"></div>
-        <div class="movie__add-comment">
+        <div class="movie__comments commentk"></div>
+        <div class="movie__add-comment commentk">
           <h3>Add a comment</h3>
           <form action="#" id="form__comment">
             <input type="text" name="inp__username" id="inp__username" class="input__field" placeholder="Your name" />
             <textarea name="inp__insights" id="inp__insights" class="input__field" cols="30" rows="5"
               placeholder="Your insights"></textarea>
             <input type="submit" id="btn__submit" class="btn" value="COMMENT" />
-            <span class="form__message" id="form__message"></span>
+            <span class="form__message" id="form__message-com"></span>
+          </form>
+        </div>
+        <div class="movie__reservations reservationk"></div>
+        <div class="movie__add-comment reservationk">
+          <h3>Add a reservation</h3>
+          <form action="#" id="form__reservation">
+            <input type="text" name="inp__username-res" id="inp__username-res" class="input__field"
+              placeholder="Your name" />
+            <input type="date" name="inp__start-date" id="inp__start-date" class="input__field"
+              placeholder="Start date" />
+            <input type="date" name="inp__end-date" id="inp__end-date" class="input__field" placeholder="End date" />
+            <input type="submit" id="btn__submit-res" class="btn" value="RESERVE" />
+            <span class="form__message" id="form__message-res"></span>
           </form>
         </div>
       </div>

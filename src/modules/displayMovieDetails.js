@@ -1,9 +1,11 @@
-import { getComments, addComment, countComments } from './consumeInvolvementAPI.js';
+import * as CIAPI from './consumeInvolvementAPI.js';
 
 const modalBox = document.querySelector('.modal__box');
 const modalCloseBtn = document.querySelector('#btn__close-modal');
 const commentForm = document.querySelector('#form__comment');
-const formMessage = document.querySelector('#form__message');
+const reservationForm = document.querySelector('#form__reservation');
+const formMessageCom = document.querySelector('#form__message-com');
+const formMessageRes = document.querySelector('#form__message-res');
 let timerId = '';
 
 const arrIntoString = (arr) => {
@@ -40,7 +42,7 @@ const buildMovieComments = (arr) => {
   const movieComments = document.querySelector('.movie__comments');
   movieComments.innerHTML = '';
   const title = document.createElement('h3');
-  title.textContent = countComments(arr);
+  title.textContent = CIAPI.countComments(arr);
   movieComments.appendChild(title);
   const commentList = document.createElement('ul');
   commentList.classList.add('comments__list');
@@ -58,27 +60,69 @@ const buildMovieComments = (arr) => {
   movieComments.appendChild(commentList);
 };
 
-const displayMovieDetails = (movie) => {
+const buildMovieReservations = (arr) => {
+  const movieReservations = document.querySelector('.movie__reservations');
+  movieReservations.innerHTML = '';
+  const title = document.createElement('h3');
+  title.textContent = CIAPI.countReservations(arr);
+  movieReservations.appendChild(title);
+  const reservationList = document.createElement('ul');
+  reservationList.classList.add('comments__list');
+  arr.forEach((reserve) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<span class="item-date">${reserve.date_start} to ${reserve.date_end}</span>
+              <span>by ${reserve.username}</span>`;
+    reservationList.appendChild(listItem);
+  });
+  movieReservations.appendChild(reservationList);
+};
+
+const closeBox = (ident) => {
+  const elDom = document.querySelectorAll(`.${ident}`);
+  elDom.forEach((el) => {
+    el.classList.add('box__hide');
+  });
+};
+
+const displayMovieComments = (movie) => {
   buildMovieDescription(movie);
-  getComments(movie.id).then((list) => {
+  CIAPI.getComments(movie.id).then((list) => {
     buildMovieComments(list);
+    closeBox('reservationk');
+    modalBox.classList.add('modal__box-display');
+  });
+};
+
+const displayMovieReservations = (movie) => {
+  buildMovieDescription(movie);
+  CIAPI.getReservations(movie.id).then((list) => {
+    buildMovieReservations(list);
+    closeBox('commentk');
     modalBox.classList.add('modal__box-display');
   });
 };
 
 modalCloseBtn.addEventListener('click', () => {
+  const comBox = document.querySelectorAll('.commentk');
+  comBox.forEach((el) => {
+    el.classList.remove('box__hide');
+  });
+  const resBox = document.querySelectorAll('.reservationk');
+  resBox.forEach((el) => {
+    el.classList.remove('box__hide');
+  });
   modalBox.classList.remove('modal__box-display');
 });
 
-const displayMessage = (msg) => {
+const displayMessage = (eldom, msg) => {
   clearTimeout(timerId);
   if (msg) {
-    formMessage.textContent = msg;
-    formMessage.classList.add('error-message');
+    eldom.textContent = msg;
+    eldom.classList.add('error-message');
   }
-  formMessage.classList.add('visible');
+  eldom.classList.add('visible');
   timerId = setTimeout(() => {
-    formMessage.classList.remove('error-message', 'visible');
+    eldom.classList.remove('error-message', 'visible');
   }, 5000);
 };
 
@@ -87,7 +131,7 @@ const validString = (str) => {
   return false;
 };
 
-const validForm = (name, comment) => {
+const validFormComment = (name, comment) => {
   name.value = name.value.trim();
   comment.value = comment.value.trim();
   if (!validString(name.value)) {
@@ -103,24 +147,57 @@ const validForm = (name, comment) => {
   return true;
 };
 
+const validFormReservation = (name) => {
+  name.value = name.value.trim();
+  if (!validString(name.value)) {
+    name.focus();
+    displayMessage('Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.');
+    return false;
+  }
+  return true;
+};
+
 const sendComment = () => {
   const name = document.querySelector('#inp__username');
   const comment = document.querySelector('#inp__insights');
   const movieId = document.querySelector('.movie__details').getAttribute('data-movieId');
 
-  if (validForm(name, comment)) {
-    addComment(movieId, name.value, comment.value).then((ans) => {
+  if (validFormComment(name, comment)) {
+    CIAPI.addComment(movieId, name.value, comment.value).then((ans) => {
       if (ans === 'Created') {
-        getComments(movieId).then((list) => {
+        CIAPI.getComments(movieId).then((list) => {
           buildMovieComments(list);
         });
         name.value = '';
         name.focus();
         comment.value = '';
-        formMessage.textContent = 'Comment sent successfully';
-        displayMessage();
+        formMessageCom.textContent = 'Comment sent successfully';
+        displayMessage(formMessageCom);
       } else {
-        displayMessage('Comments are not available for now. Try again later.');
+        displayMessage(formMessageCom, 'Comments are not available for now. Try again later.');
+      }
+    });
+  }
+};
+
+const sendReservation = () => {
+  const name = document.querySelector('#inp__username-res');
+  const startDate = document.querySelector('#inp__start-date');
+  const endDate = document.querySelector('#inp__end-date');
+  const movieId = document.querySelector('.movie__details').getAttribute('data-movieId');
+
+  if (validFormReservation(name)) {
+    CIAPI.addReservation(movieId, name.value, startDate.value, endDate.value).then((ans) => {
+      if (ans === 'Created') {
+        CIAPI.getReservations(movieId).then((list) => {
+          buildMovieReservations(list);
+        });
+        name.value = '';
+        name.focus();
+        formMessageRes.textContent = 'Comment sent successfully';
+        displayMessage(formMessageRes);
+      } else {
+        displayMessage(formMessageRes, 'Comments are not available for now. Try again later.');
       }
     });
   }
@@ -131,4 +208,9 @@ commentForm.addEventListener('submit', (e) => {
   sendComment();
 });
 
-export { displayMovieDetails as default };
+reservationForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  sendReservation();
+});
+
+export { displayMovieComments, displayMovieReservations };
