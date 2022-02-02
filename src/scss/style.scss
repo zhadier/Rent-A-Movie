@@ -12,6 +12,8 @@
 
 body {
   @include font-b;
+
+  background: url(../images/b1.png);
 }
 
 header {
@@ -19,14 +21,20 @@ header {
 
   justify-content: space-between;
   align-items: center;
-  width: 80%;
+  width: 90%;
+  margin: 50px auto;
+  background-color: $gray-light;
+  padding: 30px;
   height: 50px;
-  margin: auto;
 
-  a {
+  .header-brand {
     @include font-h;
 
     text-decoration: none;
+    background-image: url(../images/logo.svg);
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 110px;
   }
 
   nav {
@@ -39,7 +47,7 @@ header {
         a {
           text-decoration: none;
 
-          @include font-b;
+          @include font-h($fw: 600);
         }
       }
     }
@@ -61,6 +69,7 @@ header {
 
     align-items: center;
     gap: 5px;
+    background-color: #111;
 
     .movie-wrapper__img {
       width: 250px;
@@ -72,37 +81,66 @@ header {
       justify-content: space-between;
       align-items: center;
       gap: 5px;
-      width: 250px;
-      height: 36px;
+      width: 240px;
+      height: 48px;
+      line-height: 1.2;
+      color: #fff;
 
       .movie-wrapper__likes {
         @include flex-colum;
 
         align-items: center;
+        width: 55px;
         gap: 3px;
+        margin-left: 1rem;
 
         i {
+          color: $accent;
+          cursor: pointer;
+
           &:hover {
-            color: rgb(248, 27, 64);
+            color: #fd3f3f;
+            transform: scale(1.2);
           }
 
           &:active {
-            color: rgb(167, 0, 28);
-            text-shadow: 0 0 5px;
+            color: rgb(255, 2, 2);
+            text-shadow: 0 0 7px red;
           }
+        }
+
+        span {
+          font-size: 0.75rem;
         }
       }
     }
 
     .movie-wrapper__comment-button {
-      width: 250px;
+      width: 240px;
+      border: none;
+      outline: 1px solid $accent;
+      background-color: transparent;
+      color: $accent;
+      padding: 0.25rem 0;
+      cursor: pointer;
+      transition: background-color ease-out 250ms;
+      margin-bottom: 5px;
+
+      &:hover {
+        background-color: $accent;
+        color: white;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 5px;
+      }
     }
   }
 }
 
 .modal__box {
   width: 100%;
-  background-color: rgb(128, 128, 128, 0.9);
+  background-color: rgba(32, 32, 32, 0.9);
   display: none;
 
   @include flex-center;
@@ -114,15 +152,67 @@ header {
   bottom: 0;
   z-index: 10;
 
-  .movie__container {
+  .modal__container {
     height: 90%;
     width: 90%;
-    max-width: 768px;
-    padding: 2rem;
-    margin: 2rem auto;
+    max-width: 48rem;
     background-color: #fff;
     border-radius: 5px;
+    background-image: url('../images/bg-movies.svg');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-clip: border-box;
+    background-size: cover;
+    position: relative;
+
+    @include flex-colum;
+
+    .modal__btn {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 1px solid $accent;
+      transition: background-color ease-out 250ms;
+      display: flex;
+
+      @include flex-center;
+
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      z-index: 11;
+
+      .btn__close-modal {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        background-color: transparent;
+
+        @include font-h($fs: 1.25rem, $color: $accent);
+
+        cursor: pointer;
+      }
+
+      &:hover {
+        background-color: $accent;
+
+        .btn__close-modal {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .movie__container {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
     overflow-y: auto;
+    background-color: rgba($color: #fff, $alpha: 0.8);
     position: relative;
 
     > * {
@@ -158,10 +248,10 @@ header {
     .btn {
       padding: 0.5rem;
       background: transparent;
-      border: 1px solid $gray-dark;
+      border: 1px solid $accent;
       cursor: pointer;
 
-      @include font-h;
+      @include font-h($color: $accent);
 
       background-color: transparent;
       transition: background-color ease-out 250ms;
@@ -173,18 +263,24 @@ header {
       }
     }
 
-    .btn__close-modal {
-      width: 1.5rem;
-      border: 1px solid transparent;
-      background-color: $gray-light;
-      margin: 0;
-      padding: 0;
-      color: $accent;
-      font-size: 2rem;
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 11;
+    scrollbar-width: thin;
+    scrollbar-color: $gray-dark $gray-light;
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $gray-dark;
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: $gray-light;
+    }
+
+    @include mq($mw: 48rem) {
+      padding: 1.5rem;
     }
   }
 
@@ -229,8 +325,8 @@ header {
   .movie__add-comment {
     form {
       width: 100%;
-      max-width: 500px;
-      margin-top: 0.5rem;
+      max-width: 31.25rem;
+      padding-top: 0.5rem;
 
       @include flex-colum;
 
@@ -246,6 +342,7 @@ header {
         width: 100%;
         padding: 0.5rem;
         border: none;
+        background-color: transparent;
         outline: 1px solid $gray-dark;
 
         @include font-b;
@@ -255,25 +352,39 @@ header {
         }
       }
     }
-  }
 
-  /* FORM VALIDATION */
-  .form__message {
-    display: none;
-    padding: 0.3rem;
-    font-size: 0.9rem;
-    color: #04bd9e;
-  }
+    /* FORM VALIDATION */
+    .form__message {
+      // display: none;
+      padding: 0.3rem;
+      font-size: 0.9rem;
+      color: #04bd9e;
+    }
 
-  .error-message {
-    color: #fd3f3f;
-  }
+    .error-message {
+      color: #fd3f3f;
+    }
 
-  .visible {
-    display: block;
+    .visible {
+      display: block;
+    }
   }
 }
 
 .modal__box-display {
   display: flex;
+}
+
+footer {
+  @include flex-row;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 50px auto 10px;
+  background-color: $gray-light;
+  padding: 30px;
+  height: 50px;
+
+  @include font-b($fw: 400);
 }

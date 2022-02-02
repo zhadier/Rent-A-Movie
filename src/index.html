@@ -1,59 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/0a86823ed7.js" crossorigin="anonymous"></script>
-    <title>JS Capstone</title>
-  </head>
 
-  <body>
-    <header>
-      <a href="#" class="header-brand">JS Capstone</a>
-      <nav class="header-nav">
-        <ul>
-          <li>
-            <a href="#movie-section" class="header-links">
-              Movies
-              <span class="movie-section__items"></span>
-            </a>
-          </li>
-          <li><a href="" class="header-links"></a></li>
-        </ul>
-      </nav>
-    </header>
-    <section id="movie-section"></section>
-    <div class="modal__box">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/0a86823ed7.js" crossorigin="anonymous"></script>
+  <title>JS Capstone</title>
+</head>
+
+<body>
+  <header>
+    <a href="#" class="header-brand"></a>
+    <nav class="header-nav">
+      <ul>
+        <li>
+          <a href="#movie-section" class="header-links">
+            Movies
+            <span class="movie-section__items"></span>
+          </a>
+        </li>
+        <li><a href="" class="header-links"></a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="movie-section"></section>
+  <div class="modal__box">
+    <div class="modal__container">
       <div class="movie__container">
-        <button type="button" id="btn__close-modal" class="btn btn__close-modal">X</button>
         <div class="movie__details"></div>
         <div class="movie__comments"></div>
         <div class="movie__add-comment">
           <h3>Add a comment</h3>
           <form action="#" id="form__comment">
-            <input
-              type="text"
-              name="inp__username"
-              id="inp__username"
-              class="input__field"
-              placeholder="Your name"
-            />
-            <textarea
-              name="inp__insights"
-              id="inp__insights"
-              class="input__field"
-              cols="30"
-              rows="5"
-              placeholder="Your insights"
-            ></textarea>
+            <input type="text" name="inp__username" id="inp__username" class="input__field" placeholder="Your name" />
+            <textarea name="inp__insights" id="inp__insights" class="input__field" cols="30" rows="5"
+              placeholder="Your insights"></textarea>
             <input type="submit" id="btn__submit" class="btn" value="COMMENT" />
-            <span class="form__message" id="form__message">Error</span>
+            <span class="form__message" id="form__message"></span>
           </form>
         </div>
       </div>
+      <div class="modal__btn">
+        <button type="button" id="btn__close-modal" class="btn__close-modal">X</button>
+      </div>
     </div>
-    <footer>
-      <p class="copy">&copy; Copyright 2021, Gaby, Zeeshan</p>
-    </footer>
-  </body>
+  </div>
+  <footer>
+    <p class="copy">&copy; Copyright 2022, Gaby & Zeeshan</p>
+  </footer>
+</body>
+
 </html>

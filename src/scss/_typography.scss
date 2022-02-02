@@ -3,12 +3,12 @@
 $ff-h: 'Karla', sans-serif;
 $ff-b: 'Spectral', serif;
 $base: #023047;
-$accent: #219cba;
+$accent: #ff3847;
 $pink: #e68ab4;
 $gray-light: #dee2e6;
-$gray-dark: #ced4da;
+$gray-dark: #bfc5ca;
 
-@mixin font-h($fs:1rem, $fw:300, $lh:1.6rem, $ls:normal, $color: $base, $tt:normal) {
+@mixin font-h($fs:1rem, $fw:300, $lh:1.6rem, $ls:normal, $color: $base, $tt:uppercase) {
   font-family: $ff-h;
   font-size: $fs;
   font-weight: $fw;
@@ -18,7 +18,7 @@ $gray-dark: #ced4da;
   text-transform: $tt;
 }
 
-@mixin font-b($fs:1rem, $fw:300, $lh:1.1rem, $ls:normal, $color: $base, $tt:normal) {
+@mixin font-b($fs:1rem, $fw:300, $lh:1.2rem, $ls:normal, $color: $base, $tt:normal) {
   font-family: $ff-b;
   font-size: $fs;
   font-weight: $fw;

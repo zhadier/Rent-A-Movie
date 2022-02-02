@@ -29,7 +29,7 @@ const buildMovieDescription = (data) => {
             <p>${data.ended}</p>
           </li>
           <li>
-            <span class="item-category">Raiting:</span>
+            <span class="item-category">Rating:</span>
             <p>${data.rating.average}</p>
           </li>
         </ul>
