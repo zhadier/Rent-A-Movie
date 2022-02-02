@@ -1,13 +1,13 @@
 import { updateLikes, setLike } from './likeFunctionality.js';
 import displayMovieDetails from './displayMovieDetails.js';
 
-const displayMovies = async (movieList) => {
-  const movieSection = document.querySelector('#movie-section');
+const displayMovies = async (movieList, appId, section) => {
+  const movieSection = document.querySelector(`#${section}-section`);
   movieSection.innerHTML = '';
   movieList.forEach((item) => {
     const mainDiv = document.createElement('div');
     mainDiv.className = 'movie-wrapper';
-    mainDiv.id = `movie${item.id}`;
+    mainDiv.id = `${section}${item.id}`;
     const details = document.createElement('div');
     details.className = 'movie-wrapper__title';
     const img = document.createElement('img');
@@ -27,17 +27,17 @@ const displayMovies = async (movieList) => {
     likes.append(like, span);
     details.append(name, likes);
     commentButton.addEventListener('click', () => {
-      displayMovieDetails(item);
+      displayMovieDetails(item, appId);
     });
     mainDiv.append(img, details, commentButton);
     movieSection.appendChild(mainDiv);
     like.addEventListener('click', () => {
-      setLike(`movie${item.id}`);
+      setLike(`${section}${item.id}`, appId);
       const number = like.parentNode.lastChild.textContent.split(' ');
       like.parentNode.lastChild.innerHTML = `${Number(number[0]) + 1} likes`;
     });
   });
-  updateLikes();
+  updateLikes(appId);
 };
 
 export { displayMovies as default };

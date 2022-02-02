@@ -3,20 +3,30 @@ import getMovieData from './modules/consumeTVMazeAPI.js';
 import displayMovies from './modules/displayMovies.js';
 import totalItems from './modules/allItemsCounter.js';
 
-const query = 'action';
-const homeItems = document.querySelector('.movie-section__items');
-getMovieData(0, query).then((movieList) => {
-  displayMovies(movieList);
-  const all = document.querySelectorAll('.movie-wrapper');
-  totalItems(all, homeItems);
-});
-
+const dvdID = 'zggEBXzpFcQqjDxvMhMz';
+const bluID = 'DiufW768skxheMu2XO3y';
 const movieLink = document.querySelector('#movie__link');
 const bluLink = document.querySelector('#blu-ray__link');
 const aboutLink = document.querySelector('#about__link');
 const movieSection = document.querySelector('#movie-section');
 const aboutSection = document.querySelector('#about-section');
 const bluSection = document.querySelector('#bluRay-section');
+const dvd = 'action';
+const bluray = 'girls';
+
+const homeItems = document.querySelector('.movie-section__items');
+getMovieData(0, dvd, 50).then((movieList) => {
+  displayMovies(movieList, dvdID, 'movie');
+  const all = document.querySelectorAll('#movie-section > .movie-wrapper');
+  totalItems(all, homeItems);
+});
+
+const bluItems = document.querySelector('.bluRay-section__items');
+getMovieData(51, bluray, 25).then((movieList) => {
+  displayMovies(movieList, bluID, 'bluRay');
+  const all = document.querySelectorAll('#bluRay-section > .movie-wrapper');
+  totalItems(all, bluItems);
+});
 
 movieLink.addEventListener('click', () => {
   movieLink.classList.add('active');

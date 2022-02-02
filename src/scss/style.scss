@@ -61,7 +61,8 @@ header {
   }
 }
 
-.movie-sec {
+.movie-sec,
+.bluRay-sec {
   @include flex-row;
 
   flex-wrap: wrap;

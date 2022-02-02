@@ -5,6 +5,7 @@ const modalCloseBtn = document.querySelector('#btn__close-modal');
 const commentForm = document.querySelector('#form__comment');
 const formMessage = document.querySelector('#form__message');
 let timerId = '';
+let newID = '';
 
 const arrIntoString = (arr) => {
   let str = '';
@@ -58,9 +59,10 @@ const buildMovieComments = (arr) => {
   movieComments.appendChild(commentList);
 };
 
-const displayMovieDetails = (movie) => {
+const displayMovieDetails = (movie, appID) => {
   buildMovieDescription(movie);
-  getComments(movie.id).then((list) => {
+  newID = appID;
+  getComments(movie.id, appID).then((list) => {
     buildMovieComments(list);
     modalBox.classList.add('modal__box-display');
   });
@@ -92,7 +94,9 @@ const validForm = (name, comment) => {
   comment.value = comment.value.trim();
   if (!validString(name.value)) {
     name.focus();
-    displayMessage('Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.');
+    displayMessage(
+      'Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.',
+    );
     return false;
   }
   if (comment.value === '' || comment.value.length > 250) {
@@ -103,15 +107,15 @@ const validForm = (name, comment) => {
   return true;
 };
 
-const sendComment = () => {
+const sendComment = (appID) => {
   const name = document.querySelector('#inp__username');
   const comment = document.querySelector('#inp__insights');
   const movieId = document.querySelector('.movie__details').getAttribute('data-movieId');
 
   if (validForm(name, comment)) {
-    addComment(movieId, name.value, comment.value).then((ans) => {
+    addComment(movieId, name.value, comment.value, appID).then((ans) => {
       if (ans === 'Created') {
-        getComments(movieId).then((list) => {
+        getComments(movieId, appID).then((list) => {
           buildMovieComments(list);
         });
         name.value = '';
@@ -128,7 +132,7 @@ const sendComment = () => {
 
 commentForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  sendComment();
+  sendComment(newID);
 });
 
 export { displayMovieDetails as default };
