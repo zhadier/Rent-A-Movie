@@ -10,3 +10,37 @@ getMovieData(0, query).then((movieList) => {
   const all = document.querySelectorAll('.movie-wrapper');
   totalItems(all, homeItems);
 });
+
+const movieLink = document.querySelector('#movie__link');
+const bluLink = document.querySelector('#blu-ray__link');
+const aboutLink = document.querySelector('#about__link');
+const movieSection = document.querySelector('#movie-section');
+const aboutSection = document.querySelector('#about-section');
+const bluSection = document.querySelector('#bluRay-section');
+
+movieLink.addEventListener('click', () => {
+  movieLink.classList.add('active');
+  bluLink.classList.remove('active');
+  aboutLink.classList.remove('active');
+  movieSection.classList.remove('toggle');
+  aboutSection.classList.add('toggle');
+  bluSection.classList.add('toggle');
+});
+
+aboutLink.addEventListener('click', () => {
+  movieLink.classList.remove('active');
+  bluLink.classList.remove('active');
+  aboutLink.classList.add('active');
+  movieSection.classList.add('toggle');
+  aboutSection.classList.remove('toggle');
+  bluSection.classList.add('toggle');
+});
+
+bluLink.addEventListener('click', () => {
+  movieLink.classList.remove('active');
+  bluLink.classList.add('active');
+  aboutLink.classList.remove('active');
+  movieSection.classList.add('toggle');
+  aboutSection.classList.add('toggle');
+  bluSection.classList.remove('toggle');
+});

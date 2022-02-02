@@ -40,12 +40,19 @@ header {
   nav {
     ul {
       list-style: none;
+      gap: 20px;
 
       @include flex-row;
 
       li {
         a {
           text-decoration: none;
+          padding: 1px;
+
+          &:hover {
+            border: 1px solid $accent;
+            color: $accent;
+          }
 
           @include font-h($fw: 600);
         }
@@ -54,7 +61,7 @@ header {
   }
 }
 
-#movie-section {
+.movie-sec {
   @include flex-row;
 
   flex-wrap: wrap;
@@ -387,4 +394,42 @@ footer {
   height: 50px;
 
   @include font-b($fw: 400);
+}
+
+.toggle {
+  display: none;
+}
+
+.active {
+  font-style: italic;
+  font-weight: 900;
+  padding: 2px;
+}
+
+.about-sec {
+  .about-section__container {
+    border: 5px solid white;
+    width: 90%;
+    max-width: 700px;
+    min-height: 65vh;
+    padding: 50px;
+    margin: auto;
+    text-align: center;
+
+    h2 {
+      margin: auto auto 80px;
+
+      @include font-h($fs: 4rem, $fw: bold, $lh: 1);
+
+      color: $accent;
+      background-color: white;
+      border: 1px solid;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: white;
+    }
+  }
 }
