@@ -95,11 +95,11 @@ header {
         margin-left: 1rem;
 
         i {
-          color: #ff3847;
+          color: $accent;
           cursor: pointer;
 
           &:hover {
-            color: rgb(251, 1, 1);
+            color: #fd3f3f;
             transform: scale(1.2);
           }
 
@@ -118,16 +118,16 @@ header {
     .movie-wrapper__comment-button {
       width: 240px;
       border: none;
-      outline: 1px solid #ff3847;
+      outline: 1px solid $accent;
       background-color: transparent;
-      color: #ff3847;
+      color: $accent;
       padding: 0.25rem 0;
       cursor: pointer;
       transition: background-color ease-out 250ms;
       margin-bottom: 5px;
 
       &:hover {
-        background-color: #ff3847;
+        background-color: $accent;
         color: white;
       }
 
@@ -373,4 +373,18 @@ header {
 
 .modal__box-display {
   display: flex;
+}
+
+footer {
+  @include flex-row;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 50px auto 10px;
+  background-color: $gray-light;
+  padding: 30px;
+  height: 50px;
+
+  @include font-b($fw: 400);
 }
