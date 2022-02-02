@@ -4,7 +4,8 @@
 
 > This Webpage is based on a movie renting site to make reservations, add comments, or just get details about movies that are being rented by the owner. The user can leave likes, comments or make reservations for movies he would like to rent. 
 
-![screenshot](https://user-images.githubusercontent.com/90556221/152203852-60190f5a-db36-4ed2-996e-fb34a482f805.png)
+![screenshot](https://user-images.githubusercontent.com/90556221/152247436-d781a825-91f1-42af-b462-025e1335a66d.png)
+
 
 Using the tvMaze api, we get ourselves data pertaining to several movies we want to rent and then store the user's reservations and comments regarding those movies using the involvement api.
 
