@@ -12,7 +12,8 @@
 
 body {
   @include font-b;
-  background-color: #111111;
+
+  background: url(../images/b1.png);
 }
 
 header {
@@ -20,14 +21,20 @@ header {
 
   justify-content: space-between;
   align-items: center;
-  width: 80%;
+  width: 90%;
+  margin: 50px auto;
+  background-color: $gray-light;
+  padding: 30px;
   height: 50px;
-  margin: auto;
 
-  a {
+  .header-brand {
     @include font-h;
 
     text-decoration: none;
+    background-image: url(../images/logo.svg);
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 110px;
   }
 
   nav {
@@ -40,7 +47,7 @@ header {
         a {
           text-decoration: none;
 
-          @include font-b;
+          @include font-h($fw: 600);
         }
       }
     }
@@ -62,7 +69,7 @@ header {
 
     align-items: center;
     gap: 5px;
-    background-color: #1f1f1f;
+    background-color: #111;
 
     .movie-wrapper__img {
       width: 250px;
@@ -75,26 +82,30 @@ header {
       align-items: center;
       gap: 5px;
       width: 240px;
-      height: 36px;
+      height: 48px;
+      line-height: 1.2;
       color: #fff;
 
       .movie-wrapper__likes {
         @include flex-colum;
 
         align-items: center;
+        width: 55px;
         gap: 3px;
         margin-left: 1rem;
 
         i {
-          color: rgb(167, 0, 28);
+          color: #ff3847;
+          cursor: pointer;
 
           &:hover {
-            color: rgb(248, 27, 64);
+            color: rgb(251, 1, 1);
+            transform: scale(1.2);
           }
 
           &:active {
-            color: rgb(167, 0, 28);
-            text-shadow: 0 0 5px;
+            color: rgb(255, 2, 2);
+            text-shadow: 0 0 7px red;
           }
         }
 
@@ -106,7 +117,23 @@ header {
 
     .movie-wrapper__comment-button {
       width: 240px;
+      border: none;
+      outline: 1px solid #ff3847;
+      background-color: transparent;
+      color: #ff3847;
+      padding: 0.25rem 0;
+      cursor: pointer;
+      transition: background-color ease-out 250ms;
       margin-bottom: 5px;
+
+      &:hover {
+        background-color: #ff3847;
+        color: white;
+      }
+
+      &:active {
+        box-shadow: inset 0 0 5px;
+      }
     }
   }
 }
@@ -124,7 +151,7 @@ header {
   right: 0;
   bottom: 0;
   z-index: 10;
-  
+
   .modal__container {
     height: 90%;
     width: 90%;
@@ -137,6 +164,7 @@ header {
     background-clip: border-box;
     background-size: cover;
     position: relative;
+
     @include flex-colum;
 
     .modal__btn {
@@ -147,7 +175,9 @@ header {
       border: 1px solid $accent;
       transition: background-color ease-out 250ms;
       display: flex;
+
       @include flex-center;
+
       position: absolute;
       top: 0.5rem;
       right: 0.5rem;
@@ -161,7 +191,9 @@ header {
         border: 0;
         outline: 0;
         background-color: transparent;
+
         @include font-h($fs: 1.25rem, $color: $accent);
+
         cursor: pointer;
       }
 
@@ -219,7 +251,7 @@ header {
       border: 1px solid $accent;
       cursor: pointer;
 
-      @include font-h($color:$accent);
+      @include font-h($color: $accent);
 
       background-color: transparent;
       transition: background-color ease-out 250ms;
@@ -247,7 +279,7 @@ header {
       background: $gray-light;
     }
 
-    @include mq ($mw:48rem) {
+    @include mq($mw: 48rem) {
       padding: 1.5rem;
     }
   }
