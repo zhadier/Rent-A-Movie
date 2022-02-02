@@ -20,7 +20,7 @@ Using the tvMaze api, we get ourselves data pertaining to several movies we want
 
 ## Video presentation
 
-- [Click here to see the presentation] ()
+- [Click here to see the presentation](https://www.loom.com/share/aa7efb9dc69247f0b4aee305210bcdc7)
 
 ## Getting Started
 
