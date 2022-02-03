@@ -26,6 +26,7 @@ header {
   background-color: $gray-light;
   padding: 30px;
   height: 50px;
+  position: relative;
 
   .header-brand {
     @include font-h;
@@ -37,25 +38,78 @@ header {
     width: 110px;
   }
 
-  nav {
+  .navbar__menu-button {
+    width: 2rem;
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    i {
+      font-size: 1.5rem;
+      color: $base;
+      transition: color ease-out 250ms;
+
+      &:hover {
+        color: $accent;
+      }
+    }
+
+    @include mq($mw: 600px) {
+      display: none;
+    }
+  }
+
+  .header-nav {
+    display: none;
+
     ul {
       list-style: none;
       gap: 20px;
 
-      @include flex-row;
+      @include flex-colum;
 
       li {
         a {
           text-decoration: none;
+          border: 1px solid transparent;
           padding: 1px;
 
           &:hover {
-            border: 1px solid $accent;
+            border-color: $accent;
             color: $accent;
           }
 
           @include font-h($fw: 600);
         }
+      }
+    }
+
+    @include mq($mw: 600px) {
+      display: flex;
+
+      ul {
+        @include flex-row;
+      }
+    }
+  }
+
+  .header-nav-modal {
+    display: flex;
+    padding: 1rem;
+    background-color: $gray-light;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 11;
+
+    ul {
+      li {
+        padding: 0.5rem;
+        border-bottom: 1px solid $gray-dark;
       }
     }
   }
@@ -112,8 +166,8 @@ header {
           }
 
           &:active {
-            color: rgb(255, 2, 2);
-            text-shadow: 0 0 7px red;
+            color: $red;
+            text-shadow: 0 0 7px $red;
           }
         }
 
@@ -254,7 +308,7 @@ header {
     }
 
     .btn {
-      padding: 0.5rem;
+      padding: 0.25rem 0.5rem;
       background: transparent;
       border: 1px solid $accent;
       cursor: pointer;
@@ -368,14 +422,14 @@ header {
 
     /* FORM VALIDATION */
     .form__message {
-      // display: none;
+      display: none;
       padding: 0.3rem;
       font-size: 0.9rem;
-      color: #04bd9e;
+      color: $green;
     }
 
     .error-message {
-      color: #fd3f3f;
+      color: $red;
     }
 
     .visible {
