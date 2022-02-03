@@ -126,7 +126,7 @@ const displayMessage = (eldom, msg) => {
   eldom.classList.add('visible');
   timerId = setTimeout(() => {
     eldom.classList.remove('error-message', 'visible');
-  }, 5000);
+  }, 10000);
 };
 
 const validString = (str) => {
@@ -139,26 +139,27 @@ const validFormComment = (name, comment) => {
   comment.value = comment.value.trim();
   if (!validString(name.value)) {
     name.focus();
-    displayMessage(
-      'Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.',
-    );
+    displayMessage(formMessageCom, 'Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.');
     return false;
   }
   if (comment.value === '' || comment.value.length > 250) {
     comment.focus();
-    displayMessage('Insights field allows 1 to 250 characters.');
+    displayMessage(formMessageCom, 'Insights field allows 1 to 250 characters.');
     return false;
   }
   return true;
 };
 
-const validFormReservation = (name) => {
+const validFormReservation = (name, dateStar, dateEnd) => {
   name.value = name.value.trim();
   if (!validString(name.value)) {
     name.focus();
-    displayMessage(
-      'Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.',
-    );
+    displayMessage(formMessageRes, 'Name field only allows alphanumeric, hyphens, underscores, and max 30 characters.');
+    return false;
+  }
+  if (dateStar.value >= dateEnd.value) {
+    dateStar.focus();
+    displayMessage(formMessageRes, 'Invalid date range.');
     return false;
   }
   return true;
@@ -193,18 +194,20 @@ const sendReservation = (appID) => {
   const endDate = document.querySelector('#inp__end-date');
   const movieId = document.querySelector('.movie__details').getAttribute('data-movieId');
 
-  if (validFormReservation(name)) {
+  if (validFormReservation(name, startDate, endDate)) {
     CIAPI.addReservation(movieId, name.value, startDate.value, endDate.value, appID).then((ans) => {
       if (ans === 'Created') {
         CIAPI.getReservations(movieId, appID).then((list) => {
           buildMovieReservations(list);
         });
         name.value = '';
+        startDate.value = '';
+        endDate.value = '';
         name.focus();
         formMessageRes.textContent = 'Reserved successfully';
         displayMessage(formMessageRes);
       } else {
-        displayMessage(formMessageRes, 'Reservations are not available for now. Try again later.');
+        displayMessage(formMessageRes, ans);
       }
     });
   }
