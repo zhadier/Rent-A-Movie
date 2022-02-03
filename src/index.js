@@ -11,6 +11,8 @@ const aboutLink = document.querySelector('#about__link');
 const movieSection = document.querySelector('#movie-section');
 const aboutSection = document.querySelector('#about-section');
 const bluSection = document.querySelector('#bluRay-section');
+const headerNav = document.querySelector('#header-nav');
+const menuBtn = document.querySelector('#menu__button');
 const dvd = 'action';
 const bluray = 'girls';
 
@@ -53,4 +55,24 @@ bluLink.addEventListener('click', () => {
   movieSection.classList.add('toggle');
   aboutSection.classList.add('toggle');
   bluSection.classList.remove('toggle');
+});
+
+menuBtn.addEventListener('click', () => {
+  const menuBtnClose = menuBtn.querySelector('#menu__icon-close');
+  if (menuBtnClose.classList.contains('box__hide')) {
+    menuBtnClose.classList.remove('box__hide');
+    menuBtn.querySelector('#menu__icon-bars').classList.add('box__hide');
+  } else {
+    menuBtnClose.classList.add('box__hide');
+    menuBtn.querySelector('#menu__icon-bars').classList.remove('box__hide');
+  }
+  headerNav.classList.toggle('header-nav-modal');
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 600 && headerNav.classList.contains('header-nav-modal')) {
+    headerNav.classList.remove('header-nav-modal');
+    menuBtn.querySelector('#menu__icon-close').classList.add('box__hide');
+    menuBtn.querySelector('#menu__icon-bars').classList.remove('box__hide');
+  }
 });
