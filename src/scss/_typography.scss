@@ -4,9 +4,10 @@ $ff-h: 'Karla', sans-serif;
 $ff-b: 'Spectral', serif;
 $base: #023047;
 $accent: #ff3847;
-$pink: #e68ab4;
 $gray-light: #dee2e6;
 $gray-dark: #bfc5ca;
+$red: #ff0202;
+$green: #02a58a;
 
 @mixin font-h($fs:1rem, $fw:300, $lh:1.6rem, $ls:normal, $color: $base, $tt:uppercase) {
   font-family: $ff-h;
