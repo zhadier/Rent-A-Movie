@@ -16,7 +16,7 @@ Using the tvMaze api, we get ourselves data pertaining to several movies we want
 
 ## Live Demo
 
-- [GH-Pages Link](https://zhadier.github.io/JavaScript-Capstone)
+- [GH-Pages Link](https://zhadier.github.io/Rent-A-Movie)
 
 ## Video presentation
 
