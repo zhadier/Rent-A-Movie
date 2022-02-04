@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/0a86823ed7.js" crossorigin="anonymous"></script>
+  <title>JS Capstone</title>
+<script defer src="main.bundle.js"></script></head>
+
+<body>
+  <header>
+    <a href="#" class="header-brand"></a>
+    <button class="navbar__menu-button" id="menu__button" type="button" aria-label="Toggle navigation">
+      <i class="fas fa-bars" id="menu__icon-bars"></i>
+      <i class="fas fa-times box__hide" id="menu__icon-close"></i>
+    </button>
+    <nav class="header-nav" id="header-nav">
+      <ul>
+        <li>
+          <a href="#" class="active" id="movie__link">
+            DVD
+            <span class="movie-section__items"></span>
+          </a>
+        </li>
+        <li>
+          <a href="#" id="blu-ray__link">
+            Blu-ray
+            <span class="bluRay-section__items"></span>
+          </a>
+        </li>
+        <li>
+          <a href="#" id="about__link">About</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section id="movie-section" class="movie-sec"></section>
+  <section id="about-section" class="about-sec toggle">
+    <div class="about-section__container">
+      <h2>About us</h2>
+      <p>
+        Remember when renting a movie meant going to a store? Times have changed for the movie
+        industry. With video rental chains a relic of the past, online shopping has become the new
+        standard for renting movies to watch at home. Rent-A Movie is one such online movie rental
+        service that allows you to browse through it's catalogue of movies, leave likes and
+        comments or just make reservations for movies you like. It's cheap, easy and so much fun!
+        <br />
+        <br />
+        Founded by Zeeshan Haider & Gaby Sanchez
+      </p>
+    </div>
+  </section>
+  <section id="bluRay-section" class="bluRay-sec toggle"></section>
+
+  <div class="modal__box">
+    <div class="modal__container">
+      <div class="movie__container">
+        <div class="movie__details"></div>
+        <div class="movie__comments commentk"></div>
+        <div class="movie__add-comment commentk">
+          <h3>Add a comment</h3>
+          <form action="#" id="form__comment">
+            <input type="text" name="inp__username" id="inp__username" class="input__field" placeholder="Your name"
+              required />
+            <textarea name="inp__insights" id="inp__insights" class="input__field" cols="30" rows="5"
+              placeholder="Your insights" required></textarea>
+            <input type="submit" id="btn__submit" class="btn" value="COMMENT" />
+            <span class="form__message" id="form__message-com"></span>
+          </form>
+        </div>
+        <div class="movie__reservations reservationk"></div>
+        <div class="movie__add-comment reservationk">
+          <h3>Add a reservation</h3>
+          <form action="#" id="form__reservation">
+            <input type="text" name="inp__username-res" id="inp__username-res" class="input__field"
+              placeholder="Your name" required />
+            <input type="date" name="inp__start-date" id="inp__start-date" class="input__field" required />
+            <input type="date" name="inp__end-date" id="inp__end-date" class="input__field" required />
+            <input type="submit" id="btn__submit-res" class="btn" value="RESERVE" />
+            <span class="form__message" id="form__message-res"></span>
+          </form>
+        </div>
+      </div>
+      <div class="modal__btn">
+        <button type="button" id="btn__close-modal" class="btn__close-modal">X</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p class="copy">&copy; Copyright 2022, Gaby & Zeeshan</p>
+  </footer>
+</body>
+
+</html>
