@@ -2,7 +2,7 @@
 
 # Rent-A Movie
 
->"Rent-A Movie" is a website for movie renting where users can make reservations, add comments, or just get details about movies that are being rented by the owner. The user can leave likes for movies he enjoyed. You're welcome to visit the Live Demo link provided to test it out yourself :)
+>"Rent-A Movie" is a website for movie renting where you can make reservations, add comments, or just get details about movies that are being rented. The user can also leave likes for movies they enjoyed. You're welcome to visit the Live Demo link provided to test it out yourself :)
 
 ![screenshot](https://user-images.githubusercontent.com/90556221/152247436-d781a825-91f1-42af-b462-025e1335a66d.png)
 
