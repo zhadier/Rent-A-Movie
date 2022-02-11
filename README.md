@@ -1,13 +1,13 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Rent A Movie
+# Rent-A Movie
 
-> This Webpage is based on a movie renting site to make reservations, add comments, or just get details about movies that are being rented by the owner. The user can leave likes, comments or make reservations for movies he would like to rent. 
+>"Rent-A Movie" is a website for movie renting where users can make reservations, add comments, or just get details about movies that are being rented by the owner. The user can leave likes for movies he enjoyed. You're welcome to visit the Live Demo link provided to test it out yourself :)
 
 ![screenshot](https://user-images.githubusercontent.com/90556221/152247436-d781a825-91f1-42af-b462-025e1335a66d.png)
 
 
-Using the tvMaze api, we get ourselves data pertaining to several movies we want to rent and then store the user's reservations and comments regarding those movies using the involvement api.
+We have used the tvMaze api to get ourselves data pertaining to several movies and then store the user's reservations and comments regarding those movies using the involvement api.
 
 
 ## Built With
@@ -28,15 +28,17 @@ Using the tvMaze api, we get ourselves data pertaining to several movies we want
 
 #### Step 1:
 
-- Clone this repo locally using git and the following git command
+- Clone this repo locally using git in the command line and the following command
 
   git clone https://github.com/zhadier/JavaScript-Capstone
+  
+- Alternatively, you can just download the complete zip file and extract the folder in your directory
 
 #### Step 2:
 
-- Open the cloned folder in a code editor of your choice
-- Run npm install (npm and node are prerequisites)
-- Run npm start (To show in live server)
+- Open the cloned/extracted folder in a code editor of your choice
+- Run npm install (npm and node are prerequisites)(downloads all dependencies)
+- Run npm start (To show the results in live server)
 - Run npm test (To see jest testing results)
 
 ## Authors
@@ -54,7 +56,8 @@ Using the tvMaze api, we get ourselves data pertaining to several movies we want
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
+Contributions, issues, and feature requests are welcome and highly encouraged!
+We feel that your input is what helps us grow so you're always Welcome :)
 
 Feel free to check the [issues page](../../issues/).
 
