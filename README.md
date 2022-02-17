@@ -30,7 +30,7 @@ We have used the tvMaze api to get ourselves data pertaining to several movies a
 
 - Clone this repo locally using git in the command line and the following command
 
-  git clone https://github.com/zhadier/JavaScript-Capstone
+  git clone https://github.com/zhadier/Rent-A-Movie
   
 - Alternatively, you can just download the complete zip file and extract the folder in your directory
 
